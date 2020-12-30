@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { css } from "styled-components";
-const POKEBALL_SRC =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHxcwMDuiAAtkfKc9otS5t4CEJ4aCKQwPqGQ&usqp=CAU";
+import React from 'react';
+import styled, { css } from 'styled-components';
+
+const POKEBALL_SRC = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHxcwMDuiAAtkfKc9otS5t4CEJ4aCKQwPqGQ&usqp=CAU';
 
 const flipFront = css`
   z-index: 0;
@@ -11,11 +11,11 @@ const flipBack = css`
   transform: rotateY(0);
 `;
 const Front = styled.div`
-  ${(p) => p.isOpen && flipFront}
+  ${(props) => props.isOpen && flipFront}
 `;
 const Back = styled.div`
   transform: rotateY(180deg);
-  ${(p) => p.isOpen && flipBack}
+  ${(props) => props.isOpen && flipBack}
 `;
 
 const CardContainer = styled.div`
@@ -34,7 +34,6 @@ const CardContainer = styled.div`
     right: 0;
     bottom: 0;
     position: absolute;
-    transition: all 0.5s;
     backface-visibility: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -51,14 +50,16 @@ const CardContainer = styled.div`
 `;
 
 function Card(props) {
-  const { open, src, onClick, indexes, showAllCards } = props;
-
+  const {
+    open, src, onClick, indexes, showAllCards,
+  } = props;
+  const isOpen = open || showAllCards;
   return (
     <CardContainer onClick={() => onClick(indexes)}>
-      <Back isOpen={open || showAllCards}>
+      <Back isOpen={isOpen}>
         <img src={src} alt="" />
       </Back>
-      <Front isOpen={open || showAllCards}>
+      <Front isOpen={isOpen}>
         <img src={POKEBALL_SRC} alt="" />
       </Front>
     </CardContainer>

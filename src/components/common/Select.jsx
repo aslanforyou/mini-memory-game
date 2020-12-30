@@ -1,18 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import CreatableSelect from "react-select/creatable";
+import React from 'react';
+import styled from 'styled-components';
+import CreatableSelect from 'react-select/creatable';
 
 const SelectContainer = styled.div`
   min-width: 250px;
   color: #555;
 `;
 
-const getOptions = (options) => {
-  return Object.keys(options).map((option) => ({
-    value: option,
-    label: option,
-  }));
-};
+const getOptions = (options) => Object.keys(options).map((option) => ({
+  value: option,
+  label: option,
+}));
 
 function Input(props) {
   const { onChange, players } = props;

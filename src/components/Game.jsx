@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Board from "./Board";
-import ScoreBoard from "./ScoreBoard";
-import Score from "./Score";
-import Start from "./Start";
-import styled from "styled-components";
-import { useSelector } from "react-redux";
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import Board from './Board';
+import ScoreBoard from './ScoreBoard';
+import Score from './Score';
+import Start from './Start';
 
 const MainContainer = styled.div`
   display: flex;
@@ -18,31 +18,31 @@ const MainContainer = styled.div`
   padding: 30px;
 `;
 
-const getUser = (state) => {
-  if (!state.game || state.game.player.length === 0) {
+const getPlayer = (state) => {
+  if (!state.player || state.player.player.length === 0) {
     return null;
   }
-  return state.game.player;
+  return state.player.player;
 };
 
-const gameIsFinished = (state) => {
-  return state.game.gameResult.isFinished;
-};
+const gameIsFinished = (state) => state.game.gameResult.isFinished;
 
-const getScoreBoard = (state) => {
-  return state.game.scoreBoard;
-};
+const getScoreBoard = (state) => state.score.scoreBoard;
 
 function Game() {
-  const player = useSelector(getUser);
+  const player = useSelector(getPlayer);
   const gameFinished = useSelector(gameIsFinished);
   const showScoreBoard = useSelector(getScoreBoard);
 
+  const isStartPage = !gameFinished && !player;
+  const isGameStarted = !gameFinished && player && !showScoreBoard;
+  const isGameFinished = gameFinished && !showScoreBoard;
+
   return (
     <MainContainer>
-      {!gameFinished && !player && <Start />}
-      {!gameFinished && player && !showScoreBoard && <Board player={player} />}
-      {gameFinished && !showScoreBoard && <Score />}
+      {isStartPage && <Start />}
+      {isGameStarted && <Board player={player} />}
+      {isGameFinished && <Score />}
       {showScoreBoard && <ScoreBoard />}
     </MainContainer>
   );

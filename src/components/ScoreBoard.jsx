@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+/* eslint-disable no-return-assign */
+import { useDispatch, useSelector } from 'react-redux';
 
-import Button from "./common/Button";
-import DataTable from "react-data-table-component";
-import { RESTART_GAME, CLEAR_PLAYER } from "../redux/actions/types";
-import React from "react";
-import styled from "styled-components";
+import DataTable from 'react-data-table-component';
+import React from 'react';
+import styled from 'styled-components';
+import { RESTART_GAME, CLEAR_PLAYER } from '../redux/actions/types';
+import Button from './common/Button';
 
 const Table = styled(DataTable)`
   width: 100%;
@@ -21,21 +22,21 @@ const Container = styled.div`
   }
 `;
 
-const getScore = (state) => state.score;
+const getScore = (state) => state.score.results;
 
 const columns = [
   {
-    name: "Player",
-    selector: "player",
+    name: 'Player',
+    selector: 'player',
   },
   {
-    name: "Played at",
-    selector: "date",
+    name: 'Played at',
+    selector: 'date',
     sortable: true,
   },
   {
-    name: "Score",
-    selector: "score",
+    name: 'Score',
+    selector: 'score',
     sortable: true,
   },
 ];

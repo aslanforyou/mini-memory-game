@@ -1,8 +1,8 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Button from "./common/Button";
-import { CLEAR_PLAYER, RESTART_GAME, SHOW_SCORE } from "../redux/actions/types";
-import styled from "styled-components";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import Button from './common/Button';
+import { CLEAR_PLAYER, RESTART_GAME, SHOW_SCORE } from '../redux/actions/types';
 
 const Container = styled.div`
   display: flex;
@@ -22,14 +22,20 @@ const ButtonContainer = styled.div`
 
 const getResult = (state) => state.game.gameResult;
 
-function Score(props) {
+function Score() {
   const dispatch = useDispatch();
   const { score, duration } = useSelector(getResult);
 
   return (
     <Container>
-      <h3>Your Score: {score}</h3>
-      <h3>Game duration: {duration}</h3>
+      <h3>
+        Your Score:
+        {score}
+      </h3>
+      <h3>
+        Game duration:
+        {duration}
+      </h3>
       <ButtonContainer>
         <Button
           text="Reset game"

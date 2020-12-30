@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Button from "./common/Button";
-import Select from "./common/Select";
-import styled from "styled-components";
-import { SET_PLAYER } from "../redux/actions/types";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import Button from './common/Button';
+import Select from './common/Select';
+import { SET_PLAYER } from '../redux/actions/types';
 
 const Container = styled.div`
   display: flex;
@@ -20,12 +20,12 @@ const Container = styled.div`
   }
 `;
 
-const getUsers = (state) => state.game.players;
+const getUsers = (state) => state.player.players;
 
 function Start() {
   const dispatch = useDispatch();
   const players = useSelector(getUsers);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
 
   const startGame = () => {
     if (!players[userName]) {

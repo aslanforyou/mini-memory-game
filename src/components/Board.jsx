@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import images from "../images";
-import Card from "./common/Card";
-import { shuffle } from "../utils";
+/* eslint-disable no-plusplus */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import images from '../images';
+import Card from './common/Card';
+import { shuffle } from '../utils';
 import {
   CLEAR_PLAYER,
   SET_GAME_FINISHED,
   SET_SCORE,
-} from "../redux/actions/types";
-import Button from "./common/Button";
+} from '../redux/actions/types';
+import Button from './common/Button';
 
 const SIZE = 4;
 const PREVIEW_TIMEOUT = 5000;
@@ -51,9 +54,7 @@ const Header = styled.div`
   margin-bottom: 20px;
 `;
 
-const isEqualCards = (cardA, cardB) => {
-  return cardA.src === cardB.src;
-};
+const isEqualCards = (cardA, cardB) => cardA.src === cardB.src;
 
 const initGame = () => {
   const shuffledImages = shuffle(images.concat(images));
@@ -61,16 +62,14 @@ const initGame = () => {
 
   return Array(SIZE)
     .fill(0)
-    .map((_, i) => {
-      return Array(SIZE)
-        .fill(0)
-        .map((_, j) => ({
-          key: index,
-          src: shuffledImages[--index],
-          indexes: [i, j],
-          open: false,
-        }));
-    });
+    .map((...args) => Array(SIZE)
+      .fill(0)
+      .map((...kargs) => ({
+        key: index,
+        src: shuffledImages[--index],
+        indexes: [args[1], kargs[1]],
+        open: false,
+      })));
 };
 
 function Board(props) {
@@ -89,8 +88,8 @@ function Board(props) {
   }, []);
 
   useEffect(() => {
-    let interval = setInterval(() => setTimer((t) => t - 1), 1000);
-    let timeoutId = setTimeout(() => {
+    const interval = setInterval(() => setTimer((t) => t - 1), 1000);
+    const timeoutId = setTimeout(() => {
       setShowAllCards(false);
       setGameStart(new Date().getTime());
       clearInterval(interval);
@@ -102,16 +101,13 @@ function Board(props) {
     };
   }, []);
 
-  const isGameFinished = () => {
-    return config.flat().every((card) => card.open);
-  };
+  const isGameFinished = () => config.flat().every((card) => card.open);
 
   const handleFinishGame = () => {
     const gameDuration = (new Date().getTime() - gameStart) / 1000;
-    const score =
-      MAX_SCORE + BEST_POSSIBLE_TIME - gameDuration > 0
-        ? MAX_SCORE + BEST_POSSIBLE_TIME - gameDuration
-        : 0;
+    const score = MAX_SCORE + BEST_POSSIBLE_TIME - gameDuration > 0
+      ? MAX_SCORE + BEST_POSSIBLE_TIME - gameDuration
+      : 0;
 
     dispatch({
       type: SET_SCORE,
@@ -123,7 +119,10 @@ function Board(props) {
       },
     });
 
-    setTimeout(() => dispatch({ type: SET_GAME_FINISHED, payload: {score: Math.floor(score), duration: gameDuration} }), 300);
+    setTimeout(() => dispatch(
+      { type: SET_GAME_FINISHED, payload: { score: Math.floor(score), duration: gameDuration } },
+    ),
+    300);
   };
 
   const handleClick = ([i, j]) => {
@@ -133,7 +132,7 @@ function Board(props) {
       return;
     }
 
-    let updatedConfig = config.slice();
+    const updatedConfig = config.slice();
     const card = updatedConfig[i][j];
 
     updatedConfig[i][j] = {
@@ -180,26 +179,28 @@ function Board(props) {
       <Header>
         <Button text="reset game" onClick={() => dispatch({ type: CLEAR_PLAYER })} />
         {showAllCards && (
-          <PageTitle>You have {timer} seconds to remember all cards!</PageTitle>
+          <PageTitle>
+            You have
+            {' '}
+            {timer}
+            {' '}
+            seconds to remember all cards!
+          </PageTitle>
         )}
       </Header>
 
       <Column>
-        {config.map((row, i) => {
-          return (
-            <Row key={i}>
-              {row.map((props) => {
-                return (
-                  <Card
-                    {...props}
-                    onClick={handleClick}
-                    showAllCards={showAllCards}
-                  />
-                );
-              })}
-            </Row>
-          );
-        })}
+        {config.map((row, i) => (
+          <Row key={i}>
+            {row.map((rowprops) => (
+              <Card
+                {...rowprops}
+                onClick={handleClick}
+                showAllCards={showAllCards}
+              />
+            ))}
+          </Row>
+        ))}
       </Column>
     </Container>
   );

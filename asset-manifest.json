@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/mini-memory-game/static/css/main.4a4137e4.chunk.css",
+    "main.js": "/mini-memory-game/static/js/main.63ac7fb1.chunk.js",
+    "main.js.map": "/mini-memory-game/static/js/main.63ac7fb1.chunk.js.map",
+    "runtime-main.js": "/mini-memory-game/static/js/runtime-main.f0e72443.js",
+    "runtime-main.js.map": "/mini-memory-game/static/js/runtime-main.f0e72443.js.map",
+    "static/js/2.4a607b78.chunk.js": "/mini-memory-game/static/js/2.4a607b78.chunk.js",
+    "static/js/2.4a607b78.chunk.js.map": "/mini-memory-game/static/js/2.4a607b78.chunk.js.map",
+    "static/js/3.193380b3.chunk.js": "/mini-memory-game/static/js/3.193380b3.chunk.js",
+    "static/js/3.193380b3.chunk.js.map": "/mini-memory-game/static/js/3.193380b3.chunk.js.map",
+    "index.html": "/mini-memory-game/index.html",
+    "static/css/main.4a4137e4.chunk.css.map": "/mini-memory-game/static/css/main.4a4137e4.chunk.css.map",
+    "static/js/2.4a607b78.chunk.js.LICENSE.txt": "/mini-memory-game/static/js/2.4a607b78.chunk.js.LICENSE.txt",
+    "static/media/1-pok.879a0d51.png": "/mini-memory-game/static/media/1-pok.879a0d51.png",
+    "static/media/2-pok.327f924f.png": "/mini-memory-game/static/media/2-pok.327f924f.png",
+    "static/media/3-pok.a141f515.png": "/mini-memory-game/static/media/3-pok.a141f515.png",
+    "static/media/4-pok.1b551d84.png": "/mini-memory-game/static/media/4-pok.1b551d84.png",
+    "static/media/5-pok.103c723a.png": "/mini-memory-game/static/media/5-pok.103c723a.png",
+    "static/media/6-pok.afc64e9c.png": "/mini-memory-game/static/media/6-pok.afc64e9c.png",
+    "static/media/7-pok.e26ec1e7.png": "/mini-memory-game/static/media/7-pok.e26ec1e7.png",
+    "static/media/8-pok.e16f756c.png": "/mini-memory-game/static/media/8-pok.e16f756c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f0e72443.js",
+    "static/js/2.4a607b78.chunk.js",
+    "static/css/main.4a4137e4.chunk.css",
+    "static/js/main.63ac7fb1.chunk.js"
+  ]
+}
